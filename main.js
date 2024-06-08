@@ -1,19 +1,11 @@
 const { app, BrowserWindow } = require("electron");
-const path = require("path");
-const url = require("url");
 
 let browserWindow;
 
 function createBrowserWindow() {
-  browserWindow = new BrowserWindow({ width: 1200, height: 800 });
+  browserWindow = new BrowserWindow({ width: 1920, height: 1080 });
 
-  browserWindow.loadURL(
-    url.format({
-      pathname: 'localhost:4200',
-      protocol: "http:",
-      slashes: true
-    })
-  );
+  browserWindow.loadURL('http://localhost:4200/');
 
   browserWindow.on("closed", () => {
     browserWindow = null;

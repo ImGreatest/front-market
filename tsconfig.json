@@ -21,7 +21,16 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@entities": ["./src/app/common/entities/index.ts"],
+      "@enums": ["./src/app/common/enums/index.ts"],
+      "@interfaces": ["./src/app/common/interfaces/index.ts"],
+      "@services": ["./src/app/common/services/index.ts"],
+      "@validators": ["./src/app/common/validators/index.ts"],
+      "@layout": ["./src/app/layout/index.ts"],
+      "@pages": ["./src/app/pages/index.ts"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
