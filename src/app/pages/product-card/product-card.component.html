@@ -1,0 +1,60 @@
+<div class="page">
+  <nav class="navbar">
+    <div class="row-cells first">
+      <span style="font-size: 20px; user-select: none" (click)="onClickLogo()">Shopify</span>
+    </div>
+    <div class="row-cells last">
+      <div class="cell">
+        <div class="navbar-cell" (click)="onClickBucket()">
+          <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
+          <span style="user-select: none">Корзина</span>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="navbar-cell" (click)="onClickProfile()">
+          <tui-svg src="tuiIconUserLarge"></tui-svg>
+          <span style="user-select: none">{{ navBarProfileName }}</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div style="width: 100%; height: 100vh; display: flex; flex-direction: column;  align-items: center; margin-top: 10rem; gap: 25px" *ngIf="product$ | async as pr">
+    <div style="display: flex; flex-direction: row; width: 100%; align-items: center; max-width: 46rem;">
+      <div style="display: flex; flex-direction: row; align-items: center; gap: 25px">
+        <span class="form-label" style="margin-right: auto">{{ pr.name }}</span>
+        <span class="form-label" style="font-size: 16px">{{ pr.price }} ₽</span>
+      </div>
+      <div style="margin-left: auto; display: flex; flex-direction: row; align-items: center; gap: 25px">
+        <button
+          appearance="outline"
+          iconLeft="tuiIconShoppingBagLarge"
+          size="m"
+          tuiIconButton
+          (click)="addToBucket(pr.id)"
+          [style.color]="'var(--tui-base-07)'"
+        ></button>
+        <p class="form-label back-label" style="font-size: 14px" (click)="onToCatalog()"><a>В каталог</a></p>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; border: 1px solid #d7d7d7; border-radius: 24px">
+      <tui-accordion class="container">
+        <tui-accordion-item>
+          Описание
+            <ng-template tuiAccordionItemContent>
+              <h5>{{ pr.description }}</h5>
+            </ng-template>
+        </tui-accordion-item>
+        <tui-accordion-item>
+            Доступные размеры
+            <ng-template tuiAccordionItemContent>
+              <div style="display: flex; flex-direction: row; gap: 25px;">
+                <div *ngFor="let size of sizes" style="display: flex; background: lightgray; align-items: center; width: 50px; height: 50px; justify-content: center; border-radius: 50%; border: 1px solid #d7d7d7">
+                  <p>{{ size }}</p>
+                </div>
+              </div>
+            </ng-template>
+        </tui-accordion-item>
+      </tui-accordion>
+    </div>
+  </div>
+</div>

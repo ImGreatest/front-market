@@ -1,32 +1,45 @@
-<div class="page">
-  <nav class="navbar">
-    <div class="row-cells first">
-      <div class="cell">
-        <div class="navbar-cell" style="border-radius: 0">
-          <tui-svg src="tuiIconMenuLarge"></tui-svg>
-          <span></span>
-        </div>
-      </div>
-      <tui-input
-        tuiTextfieldSize="m"
-      >
-        Найти
-        <input tuiTextfield />
-      </tui-input>
-    </div>
-    <div class="row-cells last">
-      <div class="cell">
-        <div class="navbar-cell">
-          <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
-          <span>Корзина</span>
-        </div>
-      </div>
-      <div class="cell">
-        <div class="navbar-cell">
-          <tui-svg src="tuiIconUserLarge"></tui-svg>
-          <span>Войти</span>
-        </div>
-      </div>
-    </div>
-  </nav>
-</div>
+<!--<div class="page">-->
+<!--  <nav class="navbar">-->
+<!--    <div class="row-cells first">-->
+<!--      <span style="font-size: 20px; user-select: none" (click)="onClickLogo()">Shopify</span>-->
+<!--      <div class="cell">-->
+<!--        <div class="navbar-cell" style="border-radius: 0" (click)="toggle(true)" (tuiActiveZoneChange)="toggle($event)">-->
+<!--          <tui-svg src="tuiIconMenuLarge"></tui-svg>-->
+<!--          <div *tuiSidebar="open; direction: 'left'">-->
+<!--            <tui-accordion [rounded]="false" [closeOthers]="false">-->
+<!--              <tui-accordion-item-->
+<!--                borders="top-bottom"-->
+<!--                [showArrow]="false"-->
+<!--                *ngFor="let category of categories$ | async"-->
+<!--                (click)="onClickCategory(category.id)"-->
+<!--              >-->
+<!--                  {{ category.name }}-->
+<!--              </tui-accordion-item>-->
+<!--            </tui-accordion>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <tui-input-->
+<!--        tuiTextfieldSize="m"-->
+<!--      >-->
+<!--        Найти-->
+<!--        <input tuiTextfield />-->
+<!--      </tui-input>-->
+<!--    </div>-->
+<!--    <div class="row-cells last">-->
+<!--      <div class="cell">-->
+<!--        <div class="navbar-cell" (click)="onClickBucket()">-->
+<!--          <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>-->
+<!--          <span style="user-select: none">Корзина</span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="cell">-->
+<!--        <div class="navbar-cell" (click)="onClickProfile()">-->
+<!--          <tui-svg src="tuiIconUserLarge"></tui-svg>-->
+<!--          <span style="user-select: none">{{ navBarProfileName }}</span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </nav>-->
+  <router-outlet></router-outlet>
+<!--</div>-->

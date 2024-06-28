@@ -1,1 +1,30 @@
-<p>sign-up works!</p>
+<div class="page">
+  <form class="page-fields-form" [formGroup]="form">
+    <span class="form-label">Регистрация</span>
+    <tui-input formControlName="login" style="width: 325px">
+      Логин
+      <input type="email" tuiTextfield/>
+    </tui-input>
+    <tui-input-password
+      formControlName="password"
+      style="width: 325px"
+    >
+      Пароль
+      <input tuiTextfield/>
+    </tui-input-password>
+    <div class="container-button">
+      <button
+        appearance="accent"
+        type="submit"
+        tuiButton
+        (click)="onLogin()"
+      >
+        Зарегистрироваться
+      </button>
+      <span
+        class="log-span"
+        (click)="onClickLog()"
+      ><a>Войти</a></span>
+    </div>
+  </form>
+</div>

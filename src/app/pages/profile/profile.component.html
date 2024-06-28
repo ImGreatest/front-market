@@ -1,1 +1,130 @@
-<p>profile works!</p>
+<div class="page">
+  <nav class="navbar">
+    <div class="row-cells first">
+      <span style="font-size: 20px; user-select: none" (click)="onClickLogo()">Shopify</span>
+    </div>
+    <div class="row-cells last">
+      <div class="cell">
+        <div class="navbar-cell" (click)="onClickBucket()">
+          <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
+          <span style="user-select: none">Корзина</span>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="navbar-cell" (click)="onClickProfile()">
+          <tui-svg src="tuiIconUserLarge"></tui-svg>
+          <span style="user-select: none">{{ navBarProfileName }}</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+<div style="width: 100%; height: 100vh; display: flex; flex-direction: column;  align-items: center; margin-top: 10rem; gap: 25px">
+  <div style="display: flex; flex-direction: row; width: 100%; align-items: center; max-width: 46rem;">
+    <span class="form-label" style="margin-right: auto">Личный кабинет</span>
+    <div style="margin-left: auto; display: flex; gap: 15px;">
+      <button
+        *ngIf="checkRole()"
+        appearance="outline"
+        iconLeft="tuiIconShoppingBagLarge"
+        size="m"
+        tuiIconButton
+        [style.color]="'var(--tui-base-07)'"
+        (click)="onClickViewGood()"
+      ></button>
+      <button
+        *ngIf="checkRole()"
+        appearance="outline"
+        iconLeft="tuiIconUserLarge"
+        size="m"
+        tuiIconButton
+        [style.color]="'var(--tui-base-07)'"
+        (click)="onClickViewUser()"
+      ></button>
+      <button
+        appearance="outline"
+        iconLeft="tuiIconLogOutLarge"
+        size="m"
+        tuiIconButton
+        [style.color]="'var(--tui-base-07)'"
+        (click)="onLeave()"
+      ></button>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; border: 1px solid #d7d7d7; border-radius: 24px">
+    <tui-accordion class="container">
+    <tui-accordion-item>
+      Фио
+        <ng-template tuiAccordionItemContent>
+          <h3 class="form-title">Редактирование ФИО</h3>
+          <form class="operation-form" [formGroup]="fioForm">
+            <tui-input formControlName="name" class="input" style="margin-bottom: 1rem">
+              Фио
+              <input placeholder="Иванов Иван Иванович" tuiTextfield/>
+            </tui-input>
+            <div class="buttons">
+              <button
+                size="l"
+                tuiButton
+                type="submit"
+                class="tui-space_right-2"
+                style="margin-left: auto"
+                (click)="onFio()"
+              >
+                Принять
+              </button>
+            </div>
+          </form>
+        </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item>
+        Телефон
+        <ng-template tuiAccordionItemContent>
+          <h3 class="form-title">Редактирование телефона</h3>
+          <form class="operation-form" [formGroup]="phoneForm">
+            <tui-input-phone formControlName="phone" class="input" style="margin-bottom: 1rem">
+              Номер телефона
+              <input placeholder="+7123456789" tuiTextfield/>
+            </tui-input-phone>
+            <div class="buttons">
+              <button
+                size="l"
+                tuiButton
+                type="submit"
+                class="tui-space_right-2"
+                style="margin-left: auto"
+                (click)="onPhone()"
+              >
+                Принять
+              </button>
+            </div>
+          </form>
+        </ng-template>
+    </tui-accordion-item>
+      <tui-accordion-item>
+        Почта
+        <ng-template tuiAccordionItemContent>
+          <h3 class="form-title">Редактирование почты</h3>
+          <form class="operation-form" [formGroup]="emailForm">
+            <tui-input formControlName="email" class="input" style="margin-bottom: 1rem">
+              Адрес электронной почты
+              <input placeholder="ivanov@mail.ru" tuiTextfield/>
+            </tui-input>
+            <div class="buttons">
+              <button
+                size="l"
+                tuiButton
+                type="submit"
+                class="tui-space_right-2"
+                style="margin-left: auto"
+                (click)="onEmail()"
+              >
+                Принять
+              </button>
+            </div>
+          </form>
+        </ng-template>
+    </tui-accordion-item>
+</tui-accordion>
+  </div>
+</div>
+</div>

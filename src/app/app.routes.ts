@@ -4,10 +4,12 @@ import {
   BucketComponent,
   CatalogComponent,
   LoginComponent,
-  NewPasswordComponent,
-  ProfileComponent, ResetComponent,
+  ProfileComponent,
   SignUpComponent
 } from "@pages";
+import { ProductCardComponent } from "./pages/product-card/product-card.component";
+import { ViewUsersComponent } from "./pages/view-users/view-users.component";
+import { ViewGoodComponent } from "./pages/view-good/view-good.component";
 
 export const routes: Routes = [
   {
@@ -24,6 +26,10 @@ export const routes: Routes = [
         component: CatalogComponent
       },
       {
+        path: 'product/:id',
+        component: ProductCardComponent,
+      },
+      {
         path: 'profile',
         component: ProfileComponent
       },
@@ -31,6 +37,14 @@ export const routes: Routes = [
         path: 'bucket',
         component: BucketComponent
       },
+      {
+        path: 'view-users',
+        component: ViewUsersComponent,
+      },
+      {
+        path: 'view-good',
+        component: ViewGoodComponent,
+      }
     ]
   },
   {
@@ -39,14 +53,6 @@ export const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
-      },
-      {
-        path: 'new-password',
-        component: NewPasswordComponent,
-      },
-      {
-        path: 'reset',
-        component: ResetComponent,
       },
       {
         path: 'sign-up',

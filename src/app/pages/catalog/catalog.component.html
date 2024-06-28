@@ -1,1 +1,68 @@
-<p>catalog works!</p>
+<div class="page">
+  <nav class="navbar">
+    <div class="row-cells first">
+      <span style="font-size: 20px; user-select: none" (click)="onClickLogo()">Shopify</span>
+      <div class="cell">
+        <div class="navbar-cell" style="border-radius: 0" (click)="toggle(true)" (tuiActiveZoneChange)="toggle($event)">
+          <tui-svg src="tuiIconMenuLarge"></tui-svg>
+          <div *tuiSidebar="open; direction: 'left'">
+            <tui-accordion [rounded]="false" [closeOthers]="false">
+              <tui-accordion-item
+                borders="top-bottom"
+                [showArrow]="false"
+                *ngFor="let category of categories$ | async"
+                (click)="onClickCategory(category.id)"
+              >
+                  {{ category.name }}
+              </tui-accordion-item>
+            </tui-accordion>
+          </div>
+        </div>
+      </div>
+      <tui-input
+        tuiTextfieldSize="m"
+      >
+        Найти
+        <input
+          tuiTextfield
+          [(ngModel)]="searchTerm"
+          (input)="filterProducts()"
+        />
+      </tui-input>
+    </div>
+    <div class="row-cells last">
+      <div class="cell">
+        <div class="navbar-cell" (click)="onClickBucket()">
+          <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
+          <span style="user-select: none">Корзина</span>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="navbar-cell" (click)="onClickProfile()">
+          <tui-svg src="tuiIconUserLarge"></tui-svg>
+          <span style="user-select: none">{{ navBarProfileName }}</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div style="display:flex; width: 100%; height: 100%; flex-direction: row; gap: 45px; margin-top: 5rem; justify-content: center;">
+  <div *ngFor="let product of products$ | async">
+    <div class="product-cell">
+      <div class="product-image">
+        <img src="product-image.jpg" alt="Product image">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <div class="product-price">
+          <span class="price">{{ product.price }} ₽</span>
+        </div>
+        <div class="product-actions">
+          <button class="btn btn-primary" (click)="viewProduct(product.id)">Подробнее</button>
+          <button class="btn btn-secondary" (click)="addToBucket(product.id)">В корзину</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  <router-outlet></router-outlet>-->
+</div>
